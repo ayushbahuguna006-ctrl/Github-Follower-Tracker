@@ -8,12 +8,16 @@ animation-timing-function: ease-in;
 animation-fill-mode: forwards;
 }
 @keyframes slideDown {
-  from {
+  0% {
     transform: translateY(-180px);
     opacity: 1;
   }
-  to {
-    transform: translateY(0);
+  90% {
+    transform: translateY(-160px);
+    opacity: 1;
+  }
+   100% {
+    transform: translateY(0px);
     opacity: 1;
   }
 }
