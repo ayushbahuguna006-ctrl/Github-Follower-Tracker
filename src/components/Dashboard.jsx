@@ -4,10 +4,12 @@ function Dashboard() {
 const [user,setuser]=useState()
 const [followers,setfolllowers]=useState()
 const [loading, setLoading] = useState(true);
+const [data, setData] = useState(null);
 const github=async ()=>{
 const res=await fetch (`https://api.github.com/users/${user}`)
-const data=await res.json()
+const fdata=await res.json()
 console.log(data)
+setData(fdata)
 setfolllowers(data.followers)
 setLoading(false)
 }
@@ -30,8 +32,8 @@ setLoading(false)
           </div>
            <div id='ani1' className="w-[90%] md:w-[32%] h-50 bg-white/90 backdrop-blur-md border border-gray-200 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex justify-center items-center">
            
-           
-             {loading?(<p className='font-bold text-xl'>React is Fun  !!!</p>):(<p>{`${user} has ${followers} followers`}</p>)}
+            {data?.message === "Not Found" ?(<p>Enter a Valid Username</p>):loading?(<p className='font-bold text-xl'>React is Fun  !!!</p>):(<p>{`${user} has ${followers} followers`}</p>)}
+            
            
            
            </div>
